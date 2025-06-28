@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkimLit - Medical Abstract Classifier</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="input-section">
+            <h1>SkimLit Abstract Classifier</h1>
+            <h2>Enter Medical Abstract</h2>
+            <form id="abstractForm">
+                <textarea id="abstractText" placeholder="Paste your medical abstract here..."></textarea>
+                <button type="submit">Classify Abstract</button>
+            </form>
+
+            <div class="loading" id="loading">
+                <img src="{{ url_for('static', filename='loading.gif') }}" alt="Processing...">
+                <p>Processing your abstract...</p>
+            </div>
+        </div>
+
+        <div class="output-section">
+            <h2>Classification Results</h2>
+            <div class="result-container" id="resultContainer"></div>
+        </div>
+    </div>
+
+    <div class="notebook-section">
+        <h2>How This Was Built</h2>
+        <p>This classifier was built using a deep learning model trained on medical abstracts. The model classifies each sentence into one of five categories:</p>
+        <ul>
+            <li><span class="label-0">BACKGROUND</span> - Provides context or background information</li>
+            <li><span class="label-1">OBJECTIVE</span> - States the purpose of the study</li>
+            <li><span class="label-2">METHODS</span> - Describes the methodology used</li>
+            <li><span class="label-3">RESULTS</span> - Presents the findings</li>
+            <li><span class="label-4">CONCLUSIONS</span> - Summarizes the conclusions</li>
+        </ul>
+
+        <a href="https://colab.research.google.com/drive/1zzTHe1Hv_2fNHTEiTPv_QLeBoUDP0vQa" class="colab-btn" target="_blank">
+            <i class="fab fa-google"></i> Open in Colab
+        </a>
+    </div>
+
+    <script>
+        document.getElementById('abstractForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const abstract = document.getElementById('abstractText').value.trim();
+            const resultContainer = document.getElementById('resultContainer');
+            const loading = document.getElementById('loading');
+
+            if (!abstract) {
+                alert('Please enter a medical abstract to classify');
+                return;
+            }
+
+            // Show loading animation
+            resultContainer.innerHTML = '';
+            loading.style.display = 'block';
+
+            // Send to server for processing
+            fetch('/classify', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `abstract=${encodeURIComponent(abstract)}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                loading.style.display = 'none';
+
+                // Display results with staggered animation
+                data.result.forEach((item, index) => {
+                    setTimeout(() => {
+                        const sentenceDiv = document.createElement('div');
+                        sentenceDiv.className = `sentence ${item.class}`;
+                        sentenceDiv.innerHTML = `<strong>${item.label}:</strong> ${item.text}`;
+                        resultContainer.appendChild(sentenceDiv);
+                    }, index * 100);
+                });
+            })
+            .catch(error => {
+                loading.style.display = 'none';
+                console.error('Error:', error);
+                alert('An error occurred while processing your abstract');
+            });
+        });
+    </script>
+</body>
+</html>
