@@ -1,4 +1,4 @@
-# SkimLit-Chrome-Extension
+# MedNLPify-Chrome-Extension
 
 
 ## Comming Soon 🔥
