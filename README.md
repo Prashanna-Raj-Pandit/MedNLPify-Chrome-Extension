@@ -17,6 +17,9 @@ using a trained NLP model to tag and classify sentences in medical abstracts.
 
 ![img.png](images/img.png)
 
+![mednlpfy](https://github.com/user-attachments/assets/b9670b17-2d50-4d24-be8d-22997a27c7d5)
+
+
 1. Create a token-level model (similar to model_1)
 
 2. Create a character-level model (similar to model_3 with a slight modification to reflect the paper)
