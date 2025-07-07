@@ -14,6 +14,7 @@ using a trained NLP model to tag and classify sentences in medical abstracts.
 * Powered by NLP and Deep Learning using TensorFlow 
 
 **Model Architecture**
+
 ![img.png](images/img.png)
 
 1. Create a token-level model (similar to model_1)
