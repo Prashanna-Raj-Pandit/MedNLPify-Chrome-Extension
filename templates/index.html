@@ -11,18 +11,29 @@
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='logo.jpg') }}">
 </head>
 <body>
-    <header>
+    <header class="centered-header">
         <div class="header-content">
-            <img src="{{ url_for('static', filename='logo.jpg') }}" alt="SkimLit Logo" class="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="SkimLit Logo" class="logo">
             <div class="header-text">
-                <h1>MedNLPify: Medical Abstract Classifier</h1>
-                <p class="tagline">AI-powered tool for analyzing and categorizing medical research abstracts</p>
+                <h1>An AI-powered Medical Abstract Classifier</h1>
             </div>
         </div>
     </header>
 
     <div class="container">
         <div class="input-section">
+            <!-- Model Selection Dropdown -->
+            <div class="model-selection">
+                <label for="modelSelect">Select Model:</label>
+                <select id="modelSelect" name="model">
+                    <option value="baseline">Baseline (Accuracy: 72.18%)</option>
+                    <option value="Model1_token_embedding" selected>Token Embedding (Accuracy: 80.00%)</option>
+                    <option value="model2_TL">Transfer Learning (Accuracy: 73.34%)</option>
+                    <option value="Model3_custom_char_embedding">Custom Char Embedding (Accuracy: 67.74%)</option>
+                    <option value="Model4_hybrid_char_and_token">Hybrid Char/Token (Accuracy: 73.37%)</option>
+                    <option value="Char_token_and_position_embedding">Char/Token/Position (Accuracy: 74.98%)</option>
+                </select>
+            </div>
 
             <h2>Enter Medical Abstract</h2>
             <form id="abstractForm">
@@ -31,11 +42,9 @@
             </form>
 
             <div class="loading" id="loading">
-                <img src="{{ url_for('static', filename='loading.gif') }}" alt="Processing...">
+                <img src="{{ url_for('static', filename='images/loading.gif') }}" alt="Processing...">
                 <p>Processing your abstract...</p>
             </div>
-
-
         </div>
 
         <div class="output-section">
@@ -59,6 +68,9 @@
                         <li><strong>Positional embeddings</strong> to understand sentence order</li>
                         <li><strong>Dense layers</strong> for final classification</li>
                     </ul>
+                    <a href="https://colab.research.google.com/drive/1zzTHe1Hv_2fNHTEiTPv_QLeBoUDP0vQa" class="colab-btn" target="_blank">
+                        <i class="fab fa-google"></i> View Full Implementation on Colab
+                    </a>
                 </div>
             </div>
         </div>
@@ -67,15 +79,15 @@
             <h3>Model Performance</h3>
             <div class="metrics-grid">
                 <div class="metric-card">
-                    <div class="metric-value">94.2%</div>
+                    <div class="metric-value">80%</div>
                     <div class="metric-label">Overall Accuracy</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-value">0.91</div>
+                    <div class="metric-value">0.79</div>
                     <div class="metric-label">F1 Score</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-value">20,000+</div>
+                    <div class="metric-value">180,040</div>
                     <div class="metric-label">Training Abstracts</div>
                 </div>
                 <div class="metric-card">
@@ -85,32 +97,17 @@
             </div>
 
             <div class="confusion-matrix">
-                <h4>Confusion Matrix</h4>
-                <img src="{{ url_for('static', filename='confusion_matrix.png') }}" alt="Confusion Matrix">
+                <h4>Model Comparison</h4>
+                <img src="{{ url_for('static', filename='images/model_comparison.png') }}" alt="Model Comparison">
             </div>
         </div>
-
-        <div class="category-explanations">
-            <h3>Classification Categories</h3>
-            <p>The model classifies each sentence into one of five categories:</p>
-            <ul>
-                <li><span class="label-0">BACKGROUND</span> - Provides context or background information</li>
-                <li><span class="label-1">OBJECTIVE</span> - States the purpose of the study</li>
-                <li><span class="label-2">METHODS</span> - Describes the methodology used</li>
-                <li><span class="label-3">RESULTS</span> - Presents the findings</li>
-                <li><span class="label-4">CONCLUSIONS</span> - Summarizes the conclusions</li>
-            </ul>
-        </div>
-
-        <a href="https://colab.research.google.com/drive/1zzTHe1Hv_2fNHTEiTPv_QLeBoUDP0vQa" class="colab-btn" target="_blank">
-            <i class="fab fa-google"></i> View Full Implementation on Colab
-        </a>
     </div>
 
     <script>
         document.getElementById('abstractForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const abstract = document.getElementById('abstractText').value.trim();
+            const model = document.getElementById('modelSelect').value;
             const resultContainer = document.getElementById('resultContainer');
             const loading = document.getElementById('loading');
 
@@ -129,7 +126,7 @@
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: `abstract=${encodeURIComponent(abstract)}`
+                body: `abstract=${encodeURIComponent(abstract)}&model=${model}`
             })
             .then(response => response.json())
             .then(data => {

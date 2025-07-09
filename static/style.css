@@ -314,3 +314,63 @@ button:hover {
         max-width: 100%;
     }
 }
+
+
+
+
+.centered-header .header-text h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.centered-header .tagline {
+    margin: 0.5rem 0 0;
+    opacity: 0.9;
+    font-size: 1.1rem;
+}
+
+/* Model Selection Dropdown */
+.model-selection {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #f0f4f8;
+    border-radius: 5px;
+}
+
+.model-selection label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--secondary);
+}
+
+.model-selection select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: white;
+    transition: var(--transition);
+}
+
+.model-selection select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .centered-header .header-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .centered-header .tagline {
+        font-size: 1rem;
+    }
+
+    .model-selection {
+        padding: 0.75rem;
+    }
+}
