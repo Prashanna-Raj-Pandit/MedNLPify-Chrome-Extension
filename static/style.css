@@ -8,6 +8,7 @@
     --transition: all 0.3s ease;
 }
 
+/* Base Styles */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -17,10 +18,46 @@ body {
     line-height: 1.6;
 }
 
+/* Header Styles */
+header {
+    background-color: var(--primary);
+    color: white;
+    padding: 1.5rem 2rem;
+    box-shadow: var(--shadow);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    height: 60px;
+    margin-right: 1.5rem;
+}
+
+.header-text h1 {
+    color: white;
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.tagline {
+    margin: 0.5rem 0 0;
+    opacity: 0.9;
+    font-size: 1rem;
+}
+
+/* Main Container */
 .container {
     display: flex;
-    min-height: 100vh;
+    min-height: calc(100vh - 120px);
     animation: fadeIn 0.5s ease-in-out;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
 @keyframes fadeIn {
@@ -43,6 +80,21 @@ body {
     background-color: #f0f4f8;
 }
 
+/* Summary Box */
+.summary-box {
+    background-color: #f0f4f8;
+    border-left: 4px solid var(--secondary);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0 5px 5px 0;
+}
+
+.summary-box h2 {
+    margin-top: 0;
+    color: var(--secondary);
+}
+
+/* Typography */
 h1 {
     color: var(--primary);
     margin-bottom: 1.5rem;
@@ -56,6 +108,12 @@ h2 {
     font-size: 1.5rem;
 }
 
+h3 {
+    color: var(--primary);
+    margin: 1.5rem 0 1rem;
+}
+
+/* Form Elements */
 textarea {
     width: 100%;
     height: 300px;
@@ -92,6 +150,7 @@ button:hover {
     transform: translateY(-2px);
 }
 
+/* Results Section */
 .result-container {
     margin-top: 1rem;
 }
@@ -115,12 +174,14 @@ button:hover {
     }
 }
 
-.label-0 { background-color: #ffdddd; } /* BACKGROUND */
-.label-1 { background-color: #ddffdd; } /* OBJECTIVE */
-.label-2 { background-color: #ddddff; } /* METHODS */
-.label-3 { background-color: #ffffcc; } /* RESULTS */
-.label-4 { background-color: #ffccff; } /* CONCLUSIONS */
+/* Category Labels */
+.label-BACKGROUND { background-color: #ffdddd; }
+.label-CONCLUSIONS { background-color: #ddffdd; }
+.label-METHODS { background-color: #ddddff; }
+.label-OBJECTIVE { background-color: #ffffcc; }
+.label-RESULTS { background-color: #ffccff; }
 
+/* Loading Animation */
 .loading {
     display: none;
     text-align: center;
@@ -132,18 +193,77 @@ button:hover {
     height: 50px;
 }
 
+/* Model Information Section */
 .notebook-section {
     padding: 2rem;
     background-color: white;
     border-radius: 8px;
-    margin: 2rem 0;
+    margin: 2rem auto;
+    max-width: 1200px;
     box-shadow: var(--shadow);
 }
 
-.notebook-section h2 {
+.model-section {
+    margin-bottom: 2rem;
+}
+
+.model-content {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.model-diagram {
+    flex: 1;
+    max-width: 600px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+}
+
+.model-details {
+    flex: 1;
+}
+
+/* Performance Metrics */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.metric-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: bold;
     color: var(--primary);
 }
 
+.metric-label {
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+.confusion-matrix {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.confusion-matrix img {
+    max-width: 100%;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+}
+
+/* Colab Button */
 .colab-btn {
     display: inline-flex;
     align-items: center;
@@ -165,12 +285,32 @@ button:hover {
     margin-right: 0.5rem;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
     }
+
     .input-section, .output-section {
         border-right: none;
         border-bottom: 1px solid #ddd;
+    }
+
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .model-content {
+        flex-direction: column;
+    }
+
+    .model-diagram {
+        max-width: 100%;
     }
 }

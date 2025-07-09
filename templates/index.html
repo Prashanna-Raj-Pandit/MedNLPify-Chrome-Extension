@@ -6,11 +6,24 @@
     <title>SkimLit - Medical Abstract Classifier</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo.jpg') }}" type="image/jpg">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo.jpg') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='logo.jpg') }}">
 </head>
 <body>
+    <header>
+        <div class="header-content">
+            <img src="{{ url_for('static', filename='logo.jpg') }}" alt="SkimLit Logo" class="logo">
+            <div class="header-text">
+                <h1>MedNLPify: Medical Abstract Classifier</h1>
+                <p class="tagline">AI-powered tool for analyzing and categorizing medical research abstracts</p>
+            </div>
+        </div>
+    </header>
+
     <div class="container">
         <div class="input-section">
-            <h1>SkimLit Abstract Classifier</h1>
+
             <h2>Enter Medical Abstract</h2>
             <form id="abstractForm">
                 <textarea id="abstractText" placeholder="Paste your medical abstract here..."></textarea>
@@ -21,6 +34,8 @@
                 <img src="{{ url_for('static', filename='loading.gif') }}" alt="Processing...">
                 <p>Processing your abstract...</p>
             </div>
+
+
         </div>
 
         <div class="output-section">
@@ -30,18 +45,65 @@
     </div>
 
     <div class="notebook-section">
-        <h2>How This Was Built</h2>
-        <p>This classifier was built using a deep learning model trained on medical abstracts. The model classifies each sentence into one of five categories:</p>
-        <ul>
-            <li><span class="label-0">BACKGROUND</span> - Provides context or background information</li>
-            <li><span class="label-1">OBJECTIVE</span> - States the purpose of the study</li>
-            <li><span class="label-2">METHODS</span> - Describes the methodology used</li>
-            <li><span class="label-3">RESULTS</span> - Presents the findings</li>
-            <li><span class="label-4">CONCLUSIONS</span> - Summarizes the conclusions</li>
-        </ul>
+        <h2>Model Architecture & Performance</h2>
+
+        <div class="model-section">
+            <h3>Model Architecture</h3>
+            <div class="model-content">
+                <img src="{{ url_for('static', filename='model_architecture.png') }}" alt="Model Architecture Diagram" class="model-diagram">
+                <div class="model-details">
+                    <p>Our hybrid model combines:</p>
+                    <ul>
+                        <li><strong>Universal Sentence Encoder</strong> for semantic understanding</li>
+                        <li><strong>Character-level embeddings</strong> for detailed text analysis</li>
+                        <li><strong>Positional embeddings</strong> to understand sentence order</li>
+                        <li><strong>Dense layers</strong> for final classification</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="performance-section">
+            <h3>Model Performance</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">94.2%</div>
+                    <div class="metric-label">Overall Accuracy</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">0.91</div>
+                    <div class="metric-label">F1 Score</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">20,000+</div>
+                    <div class="metric-label">Training Abstracts</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">5</div>
+                    <div class="metric-label">Categories</div>
+                </div>
+            </div>
+
+            <div class="confusion-matrix">
+                <h4>Confusion Matrix</h4>
+                <img src="{{ url_for('static', filename='confusion_matrix.png') }}" alt="Confusion Matrix">
+            </div>
+        </div>
+
+        <div class="category-explanations">
+            <h3>Classification Categories</h3>
+            <p>The model classifies each sentence into one of five categories:</p>
+            <ul>
+                <li><span class="label-0">BACKGROUND</span> - Provides context or background information</li>
+                <li><span class="label-1">OBJECTIVE</span> - States the purpose of the study</li>
+                <li><span class="label-2">METHODS</span> - Describes the methodology used</li>
+                <li><span class="label-3">RESULTS</span> - Presents the findings</li>
+                <li><span class="label-4">CONCLUSIONS</span> - Summarizes the conclusions</li>
+            </ul>
+        </div>
 
         <a href="https://colab.research.google.com/drive/1zzTHe1Hv_2fNHTEiTPv_QLeBoUDP0vQa" class="colab-btn" target="_blank">
-            <i class="fab fa-google"></i> Open in Colab
+            <i class="fab fa-google"></i> View Full Implementation on Colab
         </a>
     </div>
 
