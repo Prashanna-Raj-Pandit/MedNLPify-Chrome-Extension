@@ -61,7 +61,7 @@ using a trained NLP model to tag and classify sentences in medical abstracts.
 
 
 
-**Model Architecture**
+### Model Architecture
 
 <p float="left">
   <img src="images/img.png" width="45%" />
