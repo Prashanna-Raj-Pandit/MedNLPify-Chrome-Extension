@@ -1,0 +1,157 @@
+body {
+  width: 300px;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+h1 {
+  color: #2c3e50;
+  margin: 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+p {
+  color: #7f8c8d;
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+.input-section textarea {
+  width: 100%;
+  height: 100px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: none;
+}
+
+.input-section button {
+  width: 100%;
+  padding: 8px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.input-section button:hover {
+  background-color: #2980b9;
+}
+
+.results-section {
+  background-color: white;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.results-section h3 {
+  margin-top: 0;
+  color: #2c3e50;
+  font-size: 16px;
+}
+
+#results {
+  font-size: 14px;
+  color: #34495e;
+}
+
+.settings button {
+  width: 100%;
+  padding: 8px;
+  background-color: #95a5a6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.settings button:hover {
+  background-color: #7f8c8d;
+}
+
+
+.results-container {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+.results-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.results-list li {
+  padding: 8px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.legend span {
+  padding: 3px 6px;
+  border-radius: 3px;
+  font-size: 12px;
+  color: white;
+}
+
+.label-OBJECTIVE {
+  background-color: #3498db;
+}
+
+.label-METHODS {
+  background-color: #2ecc71;
+}
+
+.label-RESULTS {
+  background-color: #e74c3c;
+}
+
+.label-CONCLUSIONS {
+  background-color: #9b59b6;
+}
+
+.label-BACKGROUND {
+  background-color: #f39c12;
+}
+
+/* Color the actual results with the same colors */
+.results-list .label-OBJECTIVE {
+  border-left: 3px solid #3498db;
+}
+
+.results-list .label-METHODS {
+  border-left: 3px solid #2ecc71;
+}
+
+.results-list .label-RESULTS {
+  border-left: 3px solid #e74c3c;
+}
+
+.results-list .label-CONCLUSIONS {
+  border-left: 3px solid #9b59b6;
+}
+
+.results-list .label-BACKGROUND {
+  border-left: 3px solid #f39c12;
+}

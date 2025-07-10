@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "MedNLPify",
+  "version": "1.0",
+  "description": "A medical NLP Chrome extension for analyzing medical text",
+  "icons": {
+    "16": "icons/icon16.jpg",
+    "48": "icons/icon48.jpg",
+    "128": "icons/icon128.jpg"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.jpg",
+      "48": "icons/icon48.jpg",
+      "128": "icons/icon128.jpg"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "permissions": ["activeTab", "contextMenus", "storage", "webRequest"],
+  "host_permissions": ["http://localhost:5000/*"]
+}

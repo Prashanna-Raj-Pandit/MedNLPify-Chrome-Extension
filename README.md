@@ -24,6 +24,24 @@
 
 ![img.png](static/images/web.png)
 
+### Extension Architecture
+<img src="static/images/extension_architecture.png" width="100%" />
+
+<img src="static/images/extension.png" width="80%" height="50%" />
+
+**Working of Extension**
+1. User Input:
+Paste text into the popup OR right-click selected text → "Analyze with MedNLPify".
+
+2. Processing:
+Text is sent to the Flask server (localhost:5000/classify).
+The TensorFlow model classifies each sentence.
+
+3. Output:
+Results display in the popup with color-coded labels.
+
+
+## Intro
 MedNLPify is a Chrome extension and NLP tool that simplifies the language of medical research abstracts to make them
 more readable and accessible to non-experts and medical practitioners alike. It replicates and builds on the approach 
 introduced in the paper <a href="https://arxiv.org/pdf/1612.05251">PubMed 200k RCT: a Dataset for Sequential Sentence Classification in Medical Abstracts</a>, 
@@ -77,7 +95,7 @@ using a trained NLP model to tag and classify sentences in medical abstracts.
 7. Create an output layer to accept the tribrid embedding and output predicted label probabilities
 8. Combine the inputs of 1, 2, 3, 4 and outputs of 7 into a tf.keras.Model
 
-![img_1.png](img_1.png)
+![img_1.png](static/images/performance.png)
 
 **Model Comparison**
 <img src="static/images/model_comparison.png"></img>
