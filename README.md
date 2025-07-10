@@ -22,7 +22,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img src="static/images/website.png">
+![img.png](static/images/web.png)
 
 MedNLPify is a Chrome extension and NLP tool that simplifies the language of medical research abstracts to make them
 more readable and accessible to non-experts and medical practitioners alike. It replicates and builds on the approach 
@@ -77,7 +77,10 @@ using a trained NLP model to tag and classify sentences in medical abstracts.
 7. Create an output layer to accept the tribrid embedding and output predicted label probabilities
 8. Combine the inputs of 1, 2, 3, 4 and outputs of 7 into a tf.keras.Model
 
+![img_1.png](img_1.png)
 
+**Model Comparison**
+<img src="static/images/model_comparison.png"></img>
 <!-- CONTRIBUTING -->
 ## Contributing
 
