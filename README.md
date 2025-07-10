@@ -89,3 +89,11 @@ Don't forget to give the project a star! Thanks again!
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+
+## References
+1. PubMed 200k RCT: A Dataset for Sequential Sentence Classification in Medical Abstracts
+* Authors: Franck Dernoncourt, Ji Young Lee
+* arXiv: https://arxiv.org/abs/1710.06071
+* GitHub: https://github.com/Franck-Dernoncourt/pubmed-rct
+
+2. mrdbourke-tensorflow-deep-learning
