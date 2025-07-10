@@ -20,14 +20,15 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## MedNLPify Website
 
 ![img.png](static/images/web.png)
 
+## MedNLPify Extension
+<img src="static/images/extension.png" width="80%" height="100%" />
+
 ### Extension Architecture
 <img src="static/images/extension_architecture.png" width="100%" />
-
-<img src="static/images/extension.png" width="80%" height="50%" />
 
 **Working of Extension**
 1. User Input:
@@ -76,7 +77,6 @@ using a trained NLP model to tag and classify sentences in medical abstracts.
     <img src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" />
   </a>
 </p>
-
 
 
 ### Model Architecture
